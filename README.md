@@ -5,4 +5,6 @@ plan:
 	.mp3 will go to music
 	all else will get sent to documents
 
-
+how to use final product:
+	run the program in any directory to clear out downloads folder
+	if desired, set up with task manager or cronjob to run daily hourly etc as desired
