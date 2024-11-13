@@ -1,8 +1,7 @@
 import os
 import platform
+import shutil
 
-
-print("success")
 Paths = {"Downloads":"", "Documents":"", "Pictures":"", "Music":"", "Videos":""}
 PathList = list(Paths.keys())
 OperatingSystem = platform.system()
@@ -17,13 +16,16 @@ else:
     tempPath = "/home/"+username
     for i in range(len(PathList)):
         Paths[PathList[i]] = tempPath + "/"+ PathList[i]
-print(Paths)
 
 downloadContents = os.listdir(Paths['Downloads'])
-"""
+
 for i in range(len(downloadContents)):
     extension = downloadContents[i].rsplit(".", 1)
-    if (extension == ".png") or (extension == ".jpg"):
-        if OperatingSystem == "Windows":
-            
-"""         
+    if (extension == "png") or (extension == "jpg") or (extension == 'jpeg') or (extension == 'gif'):
+        shutil.move(Paths['Downloads']+"/"+downloadContents[i], Paths['Pictures']+"/"+downloadContents[i])
+    if (extension == "mp4") or (extension == "mov") or (extension == 'avi)'):
+        shutil.move(Paths['Downloads']+"/"+downloadContents[i], Paths['Videos']+"/"+downloadContents[i])
+    if (extension == 'mp3') or (extension == 'wav'):
+        shutil.move(Paths['Downloads']+"/"+downloadContents[i], Paths['Music']+"/"+downloadContents[i])
+    else:
+        shutil.move(Paths['Downloads']+"/"+downloadContents[i], Paths['Documents']+"/"+downloadContents[i])
